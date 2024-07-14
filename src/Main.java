@@ -5,18 +5,33 @@ public class Main {
         CurrencyExchange currencyExchange = new CurrencyExchange();
         ExchangeHistory exchangeHistory = new ExchangeHistory();
         Scanner scanner = new Scanner(System.in);
+      
         while (true) {
             System.out.println("Введите сумму обмена");
             double amount = scanner.nextDouble();
 
-            System.out.println("Введите валюту которую хотите обменять");
-            String fromCurrency = scanner.next();
+            System.out.println("Введите валюту, которую хотите обменять (USD, EUR, GBP):");
+            String fromCurrency = scanner.next().toUpperCase();
 
-            System.out.println("Введите валюту которую хотите приобрести");
-            String toCurrency = scanner.next();
+            System.out.println("Введите валюту, которую хотите приобрести (USD, EUR, GBP):");
+            String toCurrency = scanner.next().toUpperCase();
 
             double result = currencyExchange.exchange(amount, fromCurrency, toCurrency);
+            System.out.printf("Результат обмена: %.2f %s%n", result, toCurrency);
+
             exchangeHistory.addRecord(amount, fromCurrency, result, toCurrency);
 
-            exchangeHistory.showHistory();
-        }}}
+            System.out.println("Хотите просмотреть историю обменов? (yes/no)");
+            String response = scanner.next().toLowerCase();
+            if (response.equals("yes")) {
+                exchangeHistory.showHistory();
+            }
+
+            System.out.println("Хотите продолжить обмен? (yes/no)");
+            response = scanner.next().toLowerCase();
+            if (response.equals("no")) {
+                break;
+            }
+        }
+    }
+}
