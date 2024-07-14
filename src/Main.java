@@ -2,14 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-
-        Scanner scanner = new Scanner(System.in);
         CurrencyExchange currencyExchange = new CurrencyExchange();
         ExchangeHistory exchangeHistory = new ExchangeHistory();
-
+        Scanner scanner = new Scanner(System.in);
+      
         while (true) {
-            System.out.println("Введите сумму для обмена:");
+            System.out.println("Введите сумму обмена");
             double amount = scanner.nextDouble();
 
             System.out.println("Введите валюту, которую хотите обменять (USD, EUR, GBP):");
@@ -37,5 +35,3 @@ public class Main {
         }
     }
 }
-
-
